@@ -4,7 +4,7 @@ import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = (props) => {
 
-  const { username, imageSource, location, profile, isFavourite } = props;
+  const { name, username, imageSource, location, profile, isFavourite } = props;
   const [isFave, setIsFave] = useState(isFavourite);
 
   const toggleFavourite = () => {
@@ -24,7 +24,7 @@ const PhotoListItem = (props) => {
       <div className='photo-list__user-details'>
         <img className='photo-list__user-profile' src={profile} alt={`Profile photo of ${username}`} />
         <div className='photo-list__user-info'>
-          {username}
+          {name}
           <div className='photo-list__user-location'>
             {location.city}, {location.country}
           </div>
