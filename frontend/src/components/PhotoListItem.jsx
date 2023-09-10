@@ -3,18 +3,11 @@ import '../styles/PhotoListItem.scss';
 import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = (props) => {
-
   const { name, username, imageSource, location, profile, isFavourite } = props;
   const [isFave, setIsFave] = useState(isFavourite);
 
   const toggleFavourite = () => {
     setIsFave(!isFave);
-    // TODO: Remove console logs
-    if (isFave) {
-      console.log("Unfavourited! ☹️");
-    } else {
-      console.log("Favourited! 😍");
-    }
   };
 
   return (
