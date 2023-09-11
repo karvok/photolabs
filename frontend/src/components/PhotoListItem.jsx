@@ -4,12 +4,18 @@ import '../styles/PhotoListItem.scss';
 
 const PhotoListItem = (props) => {
   
-  const { name, username, imageSource, location, profile, isFavourite, toggleFavourite } = props;
+  const { id, name, username, imageSource, location, profile, isFavourite, toggleFavourite } = props;
+
+  const handlePhotoClick = () => {
+    // TODO: Remove console log
+    console.log(`Photo id ${id} was clicked! 🤠`)
+    props.openPhotoDetailsModal();
+  };
 
   return (
     <div className='photo-list__item'>
       <PhotoFavButton isFavourite={isFavourite} toggleFavourite={toggleFavourite} />
-      <img className='photo-list__image' src={imageSource} alt={`Photo of ${location.city}, ${location.country}`} />
+      <img className='photo-list__image' src={imageSource} alt={`Photo of ${location.city}, ${location.country}`} onClick={handlePhotoClick} />
       <div className='photo-list__user-details'>
         <img className='photo-list__user-profile' src={profile} alt={`Profile photo of ${username}`} />
         <div className='photo-list__user-info'>

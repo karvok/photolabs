@@ -4,7 +4,7 @@ import PhotoList from '../components/PhotoList';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
-  const { photos, topics } = props;
+  const { photos, topics, openPhotoDetailsModal } = props;
   const [favourites, setFavourites] = useState([]);
 
   const toggleFavourite = (photoId) => {
@@ -26,6 +26,7 @@ const HomeRoute = (props) => {
         photos={photos}
         favourites={favourites}
         toggleFavourite={toggleFavourite}
+        openPhotoDetailsModal={openPhotoDetailsModal}
       />
     </div>
   );
