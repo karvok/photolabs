@@ -9,14 +9,11 @@ const HomeRoute = (props) => {
   const [favourites, setFavourites] = useState([]);
 
   const toggleFavourite = (id) => {
-
     setFavourites((prev) => {
-      let newFavourites = [];
-      if (prev.includes(id)) {
-        newFavourites = prev.filter((favourited) => favourited !== id);
-      } else {
-        newFavourites = [...prev, id];
-      }
+      const newFavourites = prev.includes(id)             // Check if id is already in the prev array
+        ? prev.filter((favourited) => favourited !== id)  // Remove id if it is already in the prev array
+        : [...prev, id];                                  // Add id if it is not already in the prev array
+
       // TODO: Remove console logs
       console.log(`Toggled photo id: ${id} 🌞`);
       console.log(`Favourite photos are: ${newFavourites} 🤠`);
