@@ -22,10 +22,16 @@ const HomeRoute = (props) => {
     });
   };
 
+  const isFavPhotoExist = favourites.length > 0;
+
   return (
     <div className='home-route'>
-      <TopNavigationBar topics={topics} />
-      <PhotoList photos={photos} favourites={favourites} toggleFavourite={toggleFavourite} />
+      <TopNavigationBar topics={topics} isFavPhotoExist={isFavPhotoExist} />
+      <PhotoList
+        photos={photos}
+        favourites={favourites}
+        toggleFavourite={toggleFavourite}
+      />
     </div>
   );
 };
