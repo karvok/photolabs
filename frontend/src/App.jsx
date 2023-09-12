@@ -6,13 +6,22 @@ import topics from './mocks/topics';
 import './App.scss';
 
 const App = () => {
+
   const [isPhotoDetailsModalOpen, setIsPhotoDetailsModalOpen] = useState(false);
+  
   const openPhotoDetailsModal = () => setIsPhotoDetailsModalOpen(true);
+  const closePhotoDetailsModal = () => setIsPhotoDetailsModalOpen(false);
 
   return (
     <div className='App'>
-      <HomeRoute photos={photos} topics={topics} openPhotoDetailsModal={openPhotoDetailsModal} />
-      {isPhotoDetailsModalOpen && <PhotoDetailsModal />}
+      <HomeRoute
+        photos={photos}
+        topics={topics}
+        openPhotoDetailsModal={openPhotoDetailsModal}
+      />
+      {isPhotoDetailsModalOpen && (
+        <PhotoDetailsModal closePhotoDetailsModal={closePhotoDetailsModal} />
+      )}
     </div>
   );
 };
