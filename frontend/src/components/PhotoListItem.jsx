@@ -3,14 +3,10 @@ import PhotoFavButton from './PhotoFavButton';
 import '../styles/PhotoListItem.scss';
 
 const PhotoListItem = (props) => {
-  
-  const { id, name, username, imageSource, location, profile, isFavourite, toggleFavourite } = props;
 
-  const handlePhotoClick = () => {
-    // TODO: Remove console log
-    console.log(`Photo id ${id} was clicked! 🤠`)
-    props.openPhotoDetailsModal();
-  };
+  const { photo, name, username, imageSource, location, profile, isFavourite, toggleFavourite } = props;
+  
+  const handlePhotoClick = () => props.openPhotoDetailsModal(photo);
 
   return (
     <div className='photo-list__item'>

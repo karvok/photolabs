@@ -7,18 +7,25 @@ import './App.scss';
 
 const App = () => {
 
-  const [isPhotoDetailsModalOpen, setIsPhotoDetailsModalOpen] = useState(false);
-  const togglePhotoDetailsModal = () => setIsPhotoDetailsModalOpen(!isPhotoDetailsModalOpen);
+  const [photoDetailsInModal, setPhotoDetailsInModal] = useState(null);
+
+  const togglePhotoDetailsInModal = (photo) => {
+    if (photoDetailsInModal === null) {
+      setPhotoDetailsInModal(photo);
+    } else {
+      setPhotoDetailsInModal(null);
+    }
+  };
 
   return (
     <div className='App'>
       <HomeRoute
         photos={photos}
         topics={topics}
-        openPhotoDetailsModal={togglePhotoDetailsModal}
+        openPhotoDetailsModal={togglePhotoDetailsInModal}
       />
-      {isPhotoDetailsModalOpen && (
-        <PhotoDetailsModal closePhotoDetailsModal={togglePhotoDetailsModal} />
+      {photoDetailsInModal && (
+        <PhotoDetailsModal photo={photoDetailsInModal} closePhotoDetailsModal={togglePhotoDetailsInModal} />
       )}
     </div>
   );

@@ -16,6 +16,7 @@ const PhotoList = ({ photos, favourites, toggleFavourite, openPhotoDetailsModal 
             isFavourite={favourites.includes(photo.id)}
             toggleFavourite={() => toggleFavourite(photo.id)}
             openPhotoDetailsModal={openPhotoDetailsModal}
+            photo={photo}
           />
         </li>
       ))}
