@@ -2,7 +2,12 @@ import React from 'react';
 import PhotoListItem from './PhotoListItem';
 import '../styles/PhotoList.scss';
 
-const PhotoList = ({ photos, favourites, toggleFavourite, openPhotoDetailsModal, }) => {
+const PhotoList = ({
+  photos,
+  favourites,
+  toggleFavourite,
+  togglePhotoDetailsModal,
+}) => {
   let photoArray = [];
 
   if (Array.isArray(photos)) {
@@ -23,7 +28,7 @@ const PhotoList = ({ photos, favourites, toggleFavourite, openPhotoDetailsModal,
             profile={photo.user.profile}
             isFavourite={favourites && favourites.includes(photo.id)}
             toggleFavourite={() => toggleFavourite(photo.id)}
-            openPhotoDetailsModal={openPhotoDetailsModal}
+            togglePhotoDetailsModal={togglePhotoDetailsModal}
             photo={photo}
           />
         </li>

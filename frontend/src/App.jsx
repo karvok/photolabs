@@ -6,15 +6,27 @@ import topics from './mocks/topics';
 import './App.scss';
 
 const App = () => {
+  const [photoDetailsModal, setPhotoDetailsModal] = useState(null);
+  const [favourites, setFavourites] = useState([]);
 
-  const [photoDetailsInModal, setPhotoDetailsInModal] = useState(null);
-
-  const togglePhotoDetailsInModal = (photo) => {
-    if (photoDetailsInModal === null) {
-      setPhotoDetailsInModal(photo);
+  const togglePhotoDetailsModal = (photo) => {
+    if (photoDetailsModal === null) {
+      setPhotoDetailsModal(photo);
     } else {
-      setPhotoDetailsInModal(null);
+      setPhotoDetailsModal(null);
     }
+  };
+
+  const toggleFavourite = (photoId) => {
+    setFavourites((previousFavourites) => {
+      const updatedFavourites = previousFavourites.includes(photoId)
+        ? previousFavourites.filter(
+            (selectedPhoto) => selectedPhoto !== photoId
+          )
+        : [...previousFavourites, photoId];
+
+      return updatedFavourites;
+    });
   };
 
   return (
@@ -22,10 +34,17 @@ const App = () => {
       <HomeRoute
         photos={photos}
         topics={topics}
-        openPhotoDetailsModal={togglePhotoDetailsInModal}
+        favourites={favourites}
+        togglePhotoDetailsModal={togglePhotoDetailsModal}
+        toggleFavourite={toggleFavourite}
       />
-      {photoDetailsInModal && (
-        <PhotoDetailsModal photo={photoDetailsInModal} closePhotoDetailsModal={togglePhotoDetailsInModal} />
+      {photoDetailsModal && (
+        <PhotoDetailsModal
+          photo={photoDetailsModal}
+          favourites={favourites}
+          toggleFavourite={toggleFavourite}
+          togglePhotoDetailsModal={togglePhotoDetailsModal}
+        />
       )}
     </div>
   );
