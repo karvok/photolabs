@@ -25,7 +25,7 @@ const PhotoDetailsModal = ({
       >
         <img src={closeSymbol} alt='close symbol' />
       </button>
-      <div className='photo-details-modal__images photo-details-modal__image'>
+      <div className='photo-details-modal__images'>
         <PhotoFavButton
           isFavourite={favourites && favourites.includes(photo.id)}
           toggleFavourite={() => toggleFavourite(photo.id)}
