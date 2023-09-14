@@ -5,10 +5,10 @@ import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = ({
-  togglePhotoDetailsModal,
   photo,
   favourites,
   toggleFavourite,
+  togglePhotoDetailsModal,
 }) => {
   useEffect(() => {
     for (const key in photo.similar_photos) {

@@ -32,11 +32,11 @@ const App = () => {
   return (
     <div className='App'>
       <HomeRoute
-        photos={photos}
         topics={topics}
+        photos={photos}
         favourites={favourites}
-        togglePhotoDetailsModal={togglePhotoDetailsModal}
         toggleFavourite={toggleFavourite}
+        togglePhotoDetailsModal={togglePhotoDetailsModal}
       />
       {photoDetailsModal && (
         <PhotoDetailsModal
