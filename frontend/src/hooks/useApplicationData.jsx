@@ -2,6 +2,7 @@ import { useReducer, useEffect } from 'react';
 
 export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   FAV_PHOTO_TOGGLED: 'FAV_PHOTO_TOGGLED',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
   CLOSE_PHOTO_DETAILS: 'CLOSE_PHOTO_DETAILS',
@@ -18,6 +19,9 @@ const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.SET_PHOTO_DATA:
       return { ...state, photoData: action.payload };
+
+    case ACTIONS.SET_TOPIC_DATA:
+      return { ...state, topicData: action.payload };
 
     case ACTIONS.FAV_PHOTO_TOGGLED:
       const { selectedPhotoId } = action.payload;
@@ -79,9 +83,9 @@ const useApplicationData = () => {
   useEffect(() => {
     fetch('/api/topics')
       .then((res) => res.json())
-      .then((data) => {
-        console.log('🌞 Topics Data:', data);
-      });
+      .then((data) =>
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data })
+      );
   }, []);
 
   return {
