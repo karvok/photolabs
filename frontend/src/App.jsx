@@ -28,7 +28,6 @@ const App = () => {
           photo={state.displayModal}
           favourites={state.favourites}
           updateToFavPhotoIds={updateToFavPhotoIds}
-          setPhotoSelected={state.displayModal}
           onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         />
       )}

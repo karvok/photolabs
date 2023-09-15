@@ -8,7 +8,6 @@ const PhotoDetailsModal = ({
   photo,
   favourites,
   updateToFavPhotoIds,
-  setPhotoSelected,
   onClosePhotoDetailsModal,
 }) => {
   useEffect(() => {
@@ -55,7 +54,6 @@ const PhotoDetailsModal = ({
             photos={photo.similar_photos}
             favourites={favourites}
             updateToFavPhotoIds={updateToFavPhotoIds}
-            setPhotoSelected={setPhotoSelected}
           />
         </div>
       </div>

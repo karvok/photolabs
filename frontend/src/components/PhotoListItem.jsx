@@ -13,7 +13,11 @@ const PhotoListItem = ({
   updateToFavPhotoIds,
   setPhotoSelected,
 }) => {
-  const handlePhotoClick = () => setPhotoSelected(photo);
+  const handlePhotoClick = () => {
+    if (typeof setPhotoSelected === 'function') {
+      setPhotoSelected(photo);
+    }
+  };
 
   return (
     <div className='photo-list__item'>
