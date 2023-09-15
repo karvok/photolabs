@@ -1,6 +1,7 @@
 import { useReducer, useEffect } from 'react';
 
 export const ACTIONS = {
+  SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   FAV_PHOTO_TOGGLED: 'FAV_PHOTO_TOGGLED',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
   CLOSE_PHOTO_DETAILS: 'CLOSE_PHOTO_DETAILS',
@@ -15,6 +16,10 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
+
+    case 'SET_PHOTO_DATA':
+      return { ...state, photoData: action.payload };
+
     case 'FAV_PHOTO_TOGGLED':
       const { selectedPhotoId } = action.payload;
       if (state.favourites.includes(selectedPhotoId)) {
@@ -66,11 +71,11 @@ const useApplicationData = () => {
   useEffect(() => {
     fetch('/api/photos')
       .then((res) => res.json())
-      .then((data) => {
-        console.log('🎃 Photos Data:', data);
-      });
+      .then((data) =>
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
+      );
   }, []);
-
+    
   return {
     state,
     updateToFavPhotoIds,
