@@ -76,6 +76,14 @@ const useApplicationData = () => {
       );
   }, []);
 
+  useEffect(() => {
+    fetch('/api/topics')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('🌞 Topics Data:', data);
+      });
+  }, []);
+
   return {
     state,
     updateToFavPhotoIds,
