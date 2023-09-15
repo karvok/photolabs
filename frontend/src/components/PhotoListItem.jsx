@@ -10,16 +10,16 @@ const PhotoListItem = ({
   location,
   profile,
   isFavourite,
-  toggleFavourite,
-  togglePhotoDetailsModal,
+  updateToFavPhotoIds,
+  setPhotoSelected,
 }) => {
-  const handlePhotoClick = () => togglePhotoDetailsModal(photo);
+  const handlePhotoClick = () => setPhotoSelected(photo);
 
   return (
     <div className='photo-list__item'>
       <PhotoFavButton
         isFavourite={isFavourite}
-        toggleFavourite={toggleFavourite}
+        updateToFavPhotoIds={updateToFavPhotoIds}
       />
       <img
         className='photo-list__image'

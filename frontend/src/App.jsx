@@ -1,49 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import useApplicationData from 'hooks/useApplicationData';
 import photos from './mocks/photos';
 import topics from './mocks/topics';
 import './App.scss';
 
 const App = () => {
-  const [photoDetailsModal, setPhotoDetailsModal] = useState(null);
-  const [favourites, setFavourites] = useState([]);
-
-  const togglePhotoDetailsModal = (photo) => {
-    if (photoDetailsModal === null) {
-      setPhotoDetailsModal(photo);
-    } else {
-      setPhotoDetailsModal(null);
-    }
-  };
-
-  const toggleFavourite = (photoId) => {
-    setFavourites((previousFavourites) => {
-      const updatedFavourites = previousFavourites.includes(photoId)
-        ? previousFavourites.filter(
-            (selectedPhoto) => selectedPhoto !== photoId
-          )
-        : [...previousFavourites, photoId];
-
-      return updatedFavourites;
-    });
-  };
+  const {
+    state,
+    updateToFavPhotoIds,
+    setPhotoSelected,
+    onClosePhotoDetailsModal,
+  } = useApplicationData();
 
   return (
     <div className='App'>
       <HomeRoute
         topics={topics}
         photos={photos}
-        favourites={favourites}
-        toggleFavourite={toggleFavourite}
-        togglePhotoDetailsModal={togglePhotoDetailsModal}
+        favourites={state.favourites}
+        updateToFavPhotoIds={updateToFavPhotoIds}
+        setPhotoSelected={setPhotoSelected}
       />
-      {photoDetailsModal && (
+      {state.displayModal && (
         <PhotoDetailsModal
-          photo={photoDetailsModal}
-          favourites={favourites}
-          toggleFavourite={toggleFavourite}
-          togglePhotoDetailsModal={togglePhotoDetailsModal}
+          photo={state.displayModal}
+          favourites={state.favourites}
+          updateToFavPhotoIds={updateToFavPhotoIds}
+          setPhotoSelected={state.displayModal}
+          onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         />
       )}
     </div>

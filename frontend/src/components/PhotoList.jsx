@@ -5,8 +5,8 @@ import '../styles/PhotoList.scss';
 const PhotoList = ({
   photos,
   favourites,
-  toggleFavourite,
-  togglePhotoDetailsModal,
+  updateToFavPhotoIds,
+  setPhotoSelected,
 }) => {
   let photoArray = [];
 
@@ -27,8 +27,8 @@ const PhotoList = ({
             name={photo.user.name}
             profile={photo.user.profile}
             isFavourite={favourites && favourites.includes(photo.id)}
-            toggleFavourite={() => toggleFavourite(photo.id)}
-            togglePhotoDetailsModal={togglePhotoDetailsModal}
+            updateToFavPhotoIds={() => updateToFavPhotoIds(photo.id)}
+            setPhotoSelected={setPhotoSelected}
             photo={photo}
           />
         </li>

@@ -7,8 +7,8 @@ const HomeRoute = ({
   topics,
   photos,
   favourites,
-  toggleFavourite,
-  togglePhotoDetailsModal,
+  updateToFavPhotoIds,
+  setPhotoSelected,
 }) => {
   const isFavPhotoExist = favourites.length > 0;
 
@@ -18,8 +18,8 @@ const HomeRoute = ({
       <PhotoList
         photos={photos}
         favourites={favourites}
-        toggleFavourite={toggleFavourite}
-        togglePhotoDetailsModal={togglePhotoDetailsModal}
+        updateToFavPhotoIds={updateToFavPhotoIds}
+        setPhotoSelected={setPhotoSelected}
       />
     </div>
   );

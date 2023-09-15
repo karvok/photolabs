@@ -7,8 +7,9 @@ import closeSymbol from '../assets/closeSymbol.svg';
 const PhotoDetailsModal = ({
   photo,
   favourites,
-  toggleFavourite,
-  togglePhotoDetailsModal,
+  updateToFavPhotoIds,
+  setPhotoSelected,
+  onClosePhotoDetailsModal,
 }) => {
   useEffect(() => {
     for (const key in photo.similar_photos) {
@@ -21,14 +22,14 @@ const PhotoDetailsModal = ({
     <div className='photo-details-modal'>
       <button
         className='photo-details-modal__close-button'
-        onClick={togglePhotoDetailsModal}
+        onClick={() => onClosePhotoDetailsModal(false)}
       >
         <img src={closeSymbol} alt='close symbol' />
       </button>
       <div className='photo-details-modal__images'>
         <PhotoFavButton
           isFavourite={favourites && favourites.includes(photo.id)}
-          toggleFavourite={() => toggleFavourite(photo.id)}
+          updateToFavPhotoIds={() => updateToFavPhotoIds(photo.id)}
         />
         <img
           className='photo-details-modal__image'
@@ -53,8 +54,8 @@ const PhotoDetailsModal = ({
           <PhotoList
             photos={photo.similar_photos}
             favourites={favourites}
-            toggleFavourite={toggleFavourite}
-            togglePhotoDetailsModal={togglePhotoDetailsModal}
+            updateToFavPhotoIds={updateToFavPhotoIds}
+            setPhotoSelected={setPhotoSelected}
           />
         </div>
       </div>
