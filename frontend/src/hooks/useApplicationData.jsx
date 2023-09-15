@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 
 export const ACTIONS = {
   FAV_PHOTO_TOGGLED: 'FAV_PHOTO_TOGGLED',
@@ -9,6 +9,8 @@ export const ACTIONS = {
 const initialState = {
   displayModal: false,
   favourites: [],
+  photoData: [],
+  topicData: [],
 };
 
 const reducer = (state, action) => {
@@ -60,6 +62,14 @@ const useApplicationData = () => {
   const onClosePhotoDetailsModal = (value) => {
     dispatch({ type: 'CLOSE_PHOTO_DETAILS', payload: { value } });
   };
+
+  useEffect(() => {
+    fetch('/api/photos')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('🎃 Photos Data:', data);
+      });
+  }, []);
 
   return {
     state,
