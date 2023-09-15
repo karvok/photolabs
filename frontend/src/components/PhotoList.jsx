@@ -18,8 +18,8 @@ const PhotoList = ({
 
   return (
     <ul className='photo-list'>
-      {photoArray.map((photo, index) => (
-        <li key={photo.id + index}>
+      {photoArray.map((photo) => (
+        <li key={photo.id}>
           <PhotoListItem
             id={photo.id}
             location={photo.location}
