@@ -7,6 +7,7 @@ export const ACTIONS = {
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
   CLOSE_PHOTO_DETAILS: 'CLOSE_PHOTO_DETAILS',
   GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS',
+  GET_PHOTOS_BY_FAVOURITED: 'GET_PHOTOS_BY_FAVOURITED',
 };
 
 const initialState = {
@@ -58,6 +59,16 @@ const reducer = (state, action) => {
         photoData: action.payload,
         topicId: action.topicId,
       };
+
+    case ACTIONS.GET_PHOTOS_BY_FAVOURITED:
+      const favoritedPhotos = state.photoData.filter((photo) =>
+        state.favourites.includes(photo.id)
+      );
+      return {
+        ...state,
+        photoData: favoritedPhotos,
+      };
+
     default:
       throw new Error(`
         ☹️ Tried to reduce with unsupported action type: ${action.type}`);
@@ -79,6 +90,18 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.CLOSE_PHOTO_DETAILS, payload: { value } });
   };
 
+  const onLoadTopic = (topicId, data) => {
+    if (topicId !== state.topicId) {
+      dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data, topicId });
+    }
+  };
+
+  const onLoadFavourites = () => {
+    if (state.favourites.length > 0) {
+      dispatch({ type: ACTIONS.GET_PHOTOS_BY_FAVOURITED });
+    }
+  };
+
   useEffect(() => {
     fetch('/api/photos')
       .then((res) => res.json())
@@ -94,20 +117,6 @@ const useApplicationData = () => {
         dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data })
       );
   }, []);
-
-  const onLoadTopic = (topicId, data) => {
-    if (topicId !== state.topicId) {
-      dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data, topicId });
-    }
-  };
-
-  const onLoadFavourites = () => {
-    if (state.favourites.length > 0) {
-      console.log(
-        `😍 Clicked! Existing favourited photos: ${state.favourites}`
-      );
-    }
-  };
 
   useEffect(() => {
     if (state.topicId !== null) {
