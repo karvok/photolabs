@@ -101,6 +101,14 @@ const useApplicationData = () => {
     }
   };
 
+  const onLoadFavourites = () => {
+    if (state.favourites.length > 0) {
+      console.log(
+        `😍 Clicked! Existing favourited photos: ${state.favourites}`
+      );
+    }
+  };
+
   useEffect(() => {
     if (state.topicId !== null) {
       const url = `/api/topics/photos/${state.topicId}`;
@@ -122,6 +130,7 @@ const useApplicationData = () => {
     state,
     updateToFavPhotoIds,
     onLoadTopic,
+    onLoadFavourites,
     setPhotoSelected,
     onClosePhotoDetailsModal,
   };

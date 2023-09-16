@@ -2,13 +2,13 @@ import React from 'react';
 import FavIcon from './FavIcon';
 import '../styles/FavBadge.scss';
 
-const FavBadge = ({ isFavPhotoExist }) => {
-  const handleFavouritesClick = () => {
-    console.log(`😍 Clicked! Existing favourited photos: ${isFavPhotoExist}`);
+const FavBadge = ({ isFavPhotoExist, onLoadFavourites }) => {
+  const handleClick = () => {
+    onLoadFavourites(isFavPhotoExist);
   };
 
   return (
-    <div className='fav-badge' onClick={handleFavouritesClick}>
+    <div className='fav-badge' onClick={handleClick}>
       <FavIcon displayAlert={!!isFavPhotoExist} selected={true} />
     </div>
   );
