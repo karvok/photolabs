@@ -64,6 +64,10 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.FAV_PHOTO_TOGGLED, payload: { selectedPhotoId } });
   };
 
+  const onLoadTopic = (topic) => {
+    console.log(`🤩 Clicked topic id ${topic}!`);
+  };
+
   const setPhotoSelected = (photo) => {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: { photo } });
   };
@@ -91,6 +95,7 @@ const useApplicationData = () => {
   return {
     state,
     updateToFavPhotoIds,
+    onLoadTopic,
     setPhotoSelected,
     onClosePhotoDetailsModal,
   };
