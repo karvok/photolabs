@@ -9,9 +9,15 @@ const TopNavigationBar = ({
   onLoadTopic,
   onLoadFavourites,
 }) => {
+  const handleClick = () => {
+    console.log('🌞 Title clicked!');
+  };
+
   return (
     <div className='top-nav-bar'>
-      <span className='top-nav-bar__logo'>PhotoLabs</span>
+      <span className='top-nav-bar__logo' onClick={handleClick}>
+        PhotoLabs
+      </span>
       <TopicList topics={topics} onLoadTopic={onLoadTopic} />
       <FavBadge
         isFavPhotoExist={isFavPhotoExist}
