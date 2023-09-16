@@ -13,7 +13,7 @@ const PhotoListItem = ({
   updateToFavPhotoIds,
   setPhotoSelected,
 }) => {
-  const handlePhotoClick = () => {
+  const handleClick = () => {
     if (typeof setPhotoSelected === 'function') {
       setPhotoSelected(photo);
     }
@@ -29,7 +29,7 @@ const PhotoListItem = ({
         className='photo-list__image'
         src={imageSource}
         alt={`Photo of ${location.city}, ${location.country}`}
-        onClick={handlePhotoClick}
+        onClick={handleClick}
       />
       <div className='photo-list__user-details'>
         <img
