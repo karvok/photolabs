@@ -96,7 +96,9 @@ const useApplicationData = () => {
   }, []);
 
   const onLoadTopic = (topicId, data) => {
-    dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data, topicId });
+    if (topicId !== state.topicId) {
+      dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data, topicId });
+    }
   };
 
   useEffect(() => {
