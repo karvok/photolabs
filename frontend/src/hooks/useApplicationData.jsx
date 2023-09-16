@@ -6,6 +6,7 @@ export const ACTIONS = {
   FAV_PHOTO_TOGGLED: 'FAV_PHOTO_TOGGLED',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
   CLOSE_PHOTO_DETAILS: 'CLOSE_PHOTO_DETAILS',
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS',
 };
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   favourites: [],
   photoData: [],
   topicData: [],
+  topicId: null,
 };
 
 const reducer = (state, action) => {
@@ -50,10 +52,15 @@ const reducer = (state, action) => {
         displayModal: value,
       };
 
+    case ACTIONS.GET_PHOTOS_BY_TOPICS:
+      return {
+        ...state,
+        photoData: action.payload,
+        topicId: action.topicId,
+      };
     default:
-      throw new Error(
-        `☹️ Tried to reduce with unsupported action type: ${action.type}`
-      );
+      throw new Error(`
+        ☹️ Tried to reduce with unsupported action type: ${action.type}`);
   }
 };
 
@@ -62,10 +69,6 @@ const useApplicationData = () => {
 
   const updateToFavPhotoIds = (selectedPhotoId) => {
     dispatch({ type: ACTIONS.FAV_PHOTO_TOGGLED, payload: { selectedPhotoId } });
-  };
-
-  const onLoadTopic = (topic) => {
-    console.log(`🤩 Clicked topic id ${topic}!`);
   };
 
   const setPhotoSelected = (photo) => {
@@ -91,6 +94,27 @@ const useApplicationData = () => {
         dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data })
       );
   }, []);
+
+  const onLoadTopic = (topicId, data) => {
+    dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data, topicId });
+  };
+
+  useEffect(() => {
+    if (state.topicId !== null) {
+      const url = `/api/topics/photos/${state.topicId}`;
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          dispatch({
+            type: ACTIONS.GET_PHOTOS_BY_TOPICS,
+            payload: data,
+            topicId: state.topicId,
+          });
+        });
+
+      onLoadTopic(state.topicId);
+    }
+  }, [state.topicId]);
 
   return {
     state,
