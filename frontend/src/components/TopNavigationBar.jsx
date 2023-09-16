@@ -8,9 +8,11 @@ const TopNavigationBar = ({
   isFavPhotoExist,
   onLoadTopic,
   onLoadFavourites,
+  onLoadAllPhotos,
 }) => {
   const handleClick = () => {
-    console.log('🌞 Title clicked!');
+    console.log('🌞 Hi from TopNavigationBar where title is clicked!');
+    onLoadAllPhotos();
   };
 
   return (

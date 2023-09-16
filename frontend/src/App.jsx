@@ -10,6 +10,7 @@ const App = () => {
     updateToFavPhotoIds,
     onLoadTopic,
     onLoadFavourites,
+    onLoadAllPhotos,
     setPhotoSelected,
     onClosePhotoDetailsModal,
   } = useApplicationData();
@@ -24,6 +25,7 @@ const App = () => {
         setPhotoSelected={setPhotoSelected}
         onLoadTopic={onLoadTopic}
         onLoadFavourites={onLoadFavourites}
+        onLoadAllPhotos={onLoadAllPhotos}
       />
       {state.displayModal && (
         <PhotoDetailsModal

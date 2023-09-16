@@ -102,6 +102,10 @@ const useApplicationData = () => {
     }
   };
 
+  const onLoadAllPhotos = () => {
+    console.log('🎃 Hi from onLoadAllPhotos inside useApplicationData!');
+  };
+
   useEffect(() => {
     fetch('/api/photos')
       .then((res) => res.json())
@@ -140,6 +144,7 @@ const useApplicationData = () => {
     updateToFavPhotoIds,
     onLoadTopic,
     onLoadFavourites,
+    onLoadAllPhotos,
     setPhotoSelected,
     onClosePhotoDetailsModal,
   };
