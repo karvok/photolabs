@@ -11,7 +11,6 @@ const TopNavigationBar = ({
   onLoadAllPhotos,
 }) => {
   const handleClick = () => {
-    console.log('🌞 Hi from TopNavigationBar where title is clicked!');
     onLoadAllPhotos();
   };
 

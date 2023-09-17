@@ -8,6 +8,7 @@ export const ACTIONS = {
   CLOSE_PHOTO_DETAILS: 'CLOSE_PHOTO_DETAILS',
   GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS',
   GET_PHOTOS_BY_FAVOURITED: 'GET_PHOTOS_BY_FAVOURITED',
+  GET_ALL_PHOTOS: 'GET_ALL_PHOTOS',
 };
 
 const initialState = {
@@ -69,6 +70,12 @@ const reducer = (state, action) => {
         photoData: favoritedPhotos,
       };
 
+    case ACTIONS.GET_ALL_PHOTOS:
+      return {
+        ...state,
+        topicId: null,
+      };
+
     default:
       throw new Error(`
         ☹️ Tried to reduce with unsupported action type: ${action.type}`);
@@ -90,8 +97,8 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.CLOSE_PHOTO_DETAILS, payload: { value } });
   };
 
-  const onLoadTopic = (topicId, data) => {
-    if (topicId !== state.topicId) {
+  const onLoadTopic = (topicId, data, updateTopicId = true) => {
+    if (updateTopicId && topicId !== state.topicId) {
       dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data, topicId });
     }
   };
@@ -103,7 +110,7 @@ const useApplicationData = () => {
   };
 
   const onLoadAllPhotos = () => {
-    console.log('🎃 Hi from onLoadAllPhotos inside useApplicationData!');
+    dispatch({ type: ACTIONS.GET_ALL_PHOTOS, payload: { topicId: null } });
   };
 
   useEffect(() => {
@@ -123,7 +130,13 @@ const useApplicationData = () => {
   }, []);
 
   useEffect(() => {
-    if (state.topicId !== null) {
+    if (state.topicId === null) {
+      fetch('/api/photos')
+        .then((res) => res.json())
+        .then((data) =>
+          dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
+        );
+    } else {
       const url = `/api/topics/photos/${state.topicId}`;
       fetch(url)
         .then((res) => res.json())
@@ -134,8 +147,6 @@ const useApplicationData = () => {
             topicId: state.topicId,
           });
         });
-
-      onLoadTopic(state.topicId);
     }
   }, [state.topicId]);
 
