@@ -5,6 +5,10 @@ Built as a single page application (SPA) with a seamless user experience in mind
 
 ## Final Product
 
+**Demo Video of Functionality:**  
+
+https://github.com/kazvee/photolabs/assets/109990289/11a5ee1a-7866-4740-81af-42e93607b588
+
 **View Multiple Photos:**  
 
 !["View of Multiple photos in the Animals category"](/docs/homepage_all_photos_screenshot.jpg)
