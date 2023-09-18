@@ -7,11 +7,11 @@ Built as a single page application (SPA) with a seamless user experience in mind
 
 **View Multiple Photos:**  
 
-!["View of Multiple photos in the Animals category"](/docs/full_page_view.jpg)
+!["View of Multiple photos in the Animals category"](/docs/homepage_all_photos_screenshot.jpg)
 
 **Closer View of Single Photo:**  
 
-!["Closer View of Single Photo"](/docs/photo_modal_view.jpg)
+!["Closer View of Single Photo"](/docs/single_photo_modal_screenshot.jpg)
 
 ## Purpose
 
@@ -47,6 +47,10 @@ Click the heart icon in the navigation menu to view all favourited photos\
 If clicked within a category, only the favourites belonging to that specific category will display\
 If clicked from the homepage, all favourites across all categories will display
 
+🎨 Enhanced Styling\
+Cursor animation on clickable menu options offers intuitive visual feedback, inviting users to explore and interact\
+Extra finishing touches, in muted tones, added to the client interface, enabling the main visual content to shine through
+
 ## Dependencies
 
 - [React](https://react.dev/)
@@ -70,12 +74,12 @@ With no plans to scale this project out, or add further customisation, create-re
 
 ### Set up Frontend & Backend
 
-- Install all dependencies with `npm i` (or `npm install`, if you prefer typing more) in each respective `/frontend` and `/backend` folder
+- Install all dependencies with `npm i` (or `npm install`, if you prefer typing more) in the `/frontend` and the `/backend` folders
 
 ### Set Up Database
 
 - In a terminal window, connect to your PostgreSQL environment using the `psql` command and your login credentials
-  - In some environments, the `startpostgres` command may need to be run first
+  - In some environments, the `startpostgres` command may need to be run beforehand
 - Create a new database using the `CREATE DATABASE photolabs_development;` command, where 'photolabs_development' is the name you want to call this new DB
 - Connect to the new database with the `\c photolabs_development` command, where 'photolabs_development' is whichever name you chose for your new DB in the the previous step
 
