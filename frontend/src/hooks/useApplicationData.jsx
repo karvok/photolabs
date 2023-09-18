@@ -8,7 +8,7 @@ export const ACTIONS = {
   CLOSE_PHOTO_DETAILS: 'CLOSE_PHOTO_DETAILS',
   GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS',
   GET_PHOTOS_BY_FAVOURITED: 'GET_PHOTOS_BY_FAVOURITED',
-  GET_ALL_PHOTOS: 'GET_ALL_PHOTOS',
+  REFETCH_ALL_PHOTOS: 'REFETCH_ALL_PHOTOS',
 };
 
 const initialState = {
@@ -70,10 +70,9 @@ const reducer = (state, action) => {
         photoData: favoritedPhotos,
       };
 
-    case ACTIONS.GET_ALL_PHOTOS:
+    case ACTIONS.REFETCH_ALL_PHOTOS:
       return {
         ...state,
-        topicId: null,
       };
 
     default:
@@ -107,10 +106,6 @@ const useApplicationData = () => {
     if (state.favourites.length > 0) {
       dispatch({ type: ACTIONS.GET_PHOTOS_BY_FAVOURITED });
     }
-  };
-
-  const onLoadAllPhotos = () => {
-    dispatch({ type: ACTIONS.GET_ALL_PHOTOS, payload: { topicId: null } });
   };
 
   useEffect(() => {
@@ -150,12 +145,25 @@ const useApplicationData = () => {
     }
   }, [state.topicId]);
 
+  const onRefetchAllPhotos = () => {
+    fetch('/api/photos')
+      .then((res) => res.json())
+      .then((data) => {
+        const currentFavorites = state.favourites;
+        const mergedPhotos = data.map((photo) => ({
+          ...photo,
+          isFavorite: currentFavorites.includes(photo.id),
+        }));
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: mergedPhotos });
+      });
+  };
+
   return {
     state,
     updateToFavPhotoIds,
     onLoadTopic,
     onLoadFavourites,
-    onLoadAllPhotos,
+    onRefetchAllPhotos,
     setPhotoSelected,
     onClosePhotoDetailsModal,
   };

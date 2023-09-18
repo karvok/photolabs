@@ -8,10 +8,10 @@ const TopNavigationBar = ({
   isFavPhotoExist,
   onLoadTopic,
   onLoadFavourites,
-  onLoadAllPhotos,
+  onRefetchAllPhotos,
 }) => {
   const handleClick = () => {
-    onLoadAllPhotos();
+    onRefetchAllPhotos();
   };
 
   return (

@@ -10,7 +10,7 @@ const HomeRoute = ({
   updateToFavPhotoIds,
   onLoadTopic,
   onLoadFavourites,
-  onLoadAllPhotos,
+  onRefetchAllPhotos,
   setPhotoSelected,
 }) => {
   const isFavPhotoExist = favourites.length > 0;
@@ -22,7 +22,7 @@ const HomeRoute = ({
         isFavPhotoExist={isFavPhotoExist}
         onLoadTopic={onLoadTopic}
         onLoadFavourites={onLoadFavourites}
-        onLoadAllPhotos={onLoadAllPhotos}
+        onRefetchAllPhotos={onRefetchAllPhotos}
       />
       <PhotoList
         photos={photos}
