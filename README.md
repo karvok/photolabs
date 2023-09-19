@@ -7,7 +7,7 @@ Built as a single page application (SPA) with a seamless user experience in mind
 
 **Demo Video of Functionality:**  
 
-https://github.com/kazvee/photolabs/assets/109990289/11a5ee1a-7866-4740-81af-42e93607b588
+[PhotoLabs_Video.webm](https://github.com/kazvee/photolabs/assets/109990289/279dd80b-ea3c-4817-a98c-c1570d3cfe9a)
 
 **View Multiple Photos:**  
 
