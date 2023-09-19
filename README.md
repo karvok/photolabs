@@ -52,8 +52,8 @@ If clicked within a category, only the favourites belonging to that specific cat
 If clicked from the homepage, all favourites across all categories will display
 
 🎨 Enhanced Styling\
-Cursor animation on clickable menu options offers intuitive visual feedback, inviting users to explore and interact\
-Extra finishing touches, in muted tones, added to the client interface, enabling the main visual content to shine through
+Cursor transforms when hovering over clickable menu items, offering intuitive visual feedback to invite users to explore and interact\
+Extra finishing touches added to the design, in muted tones, enable the main visual content to shine through
 
 ## Dependencies
 
