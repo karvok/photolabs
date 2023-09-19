@@ -45,14 +45,14 @@ const PhotoDetailsModal = ({
             <img
               className='photo-details-modal__image'
               src={photo.urls.regular}
-              alt={`Photo of ${photo.location.city}, ${photo.location.country}`}
+              alt={`Taken in ${photo.location.city}, ${photo.location.country}`}
             />
 
             <div className='photo-list__user-details'>
               <img
                 className='photo-list__user-profile'
                 src={photo.user.profile}
-                alt={`Profile photo of ${photo.user.username}`}
+                alt={`Profile of ${photo.user.name}`}
               />
               <div className='photo-list__user-info'>
                 {photo.user.name}

@@ -43,14 +43,14 @@ const PhotoListItem = ({
       <img
         className='photo-list__image'
         src={imageSource}
-        alt={`Photo of ${location.city}, ${location.country}`}
+        alt={`Taken in ${location.city}, ${location.country}`}
         onClick={handleClick}
       />
       <div className='photo-list__user-details'>
         <img
           className='photo-list__user-profile'
           src={profile}
-          alt={`Profile photo of ${username}`}
+          alt={`Profile of ${name}`}
         />
         <div className='photo-list__user-info'>
           {name}
