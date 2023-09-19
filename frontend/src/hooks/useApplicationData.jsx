@@ -33,8 +33,8 @@ const reducer = (state, action) => {
         return {
           ...state,
           favourites: state.favourites.filter(
-            (alreadyFavoritedPhotoId) =>
-              alreadyFavoritedPhotoId !== selectedPhotoId
+            (alreadyFavouritedPhotoId) =>
+              alreadyFavouritedPhotoId !== selectedPhotoId
           ),
         };
       }
@@ -62,12 +62,12 @@ const reducer = (state, action) => {
       };
 
     case ACTIONS.GET_PHOTOS_BY_FAVOURITED:
-      const favoritedPhotos = state.photoData.filter((photo) =>
+      const favouritedPhotos = state.photoData.filter((photo) =>
         state.favourites.includes(photo.id)
       );
       return {
         ...state,
-        photoData: favoritedPhotos,
+        photoData: favouritedPhotos,
       };
 
     case ACTIONS.REFETCH_ALL_PHOTOS:
@@ -81,6 +81,24 @@ const reducer = (state, action) => {
   }
 };
 
+/**
+ * Custom hook for managing the application data and state.
+ *
+ * @property {Object} state - The application state.
+ * @property {boolean} displayModal - Indicates whether a photo details modal is displayed.
+ * @property {Array} favourites - An array of favourited photo IDs.
+ * @property {Array} photoData - The list of photo data.
+ * @property {Array} topicData - The list of topics data.
+ * @property {string} topicId - The currently selected topic ID.
+ * @property {function} updateToFavPhotoIds - Function triggered when the favourite button is clicked.
+ * @property {function} setPhotoSelected - Function triggered to select a photo.
+ * @property {function} onClosePhotoDetailsModal - Function triggered when the X (close) button is clicked.
+ * @property {function} onLoadTopic - Function triggered when a topic is selected.
+ * @property {function} onLoadFavourites - Function triggered when the favourite badge is clicked.
+ * @property {function} onRefetchAllPhotos - Function triggered when the app title is clicked.
+ *
+ * @returns {Object} An object containing the state and functions to interact with it.
+ */
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -149,10 +167,10 @@ const useApplicationData = () => {
     fetch('/api/photos')
       .then((res) => res.json())
       .then((data) => {
-        const currentFavorites = state.favourites;
+        const currentFavourites = state.favourites;
         const mergedPhotos = data.map((photo) => ({
           ...photo,
-          isFavorite: currentFavorites.includes(photo.id),
+          isFavourite: currentFavourites.includes(photo.id),
         }));
         dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: mergedPhotos });
       });

@@ -4,6 +4,16 @@ import PhotoFavButton from '../components/PhotoFavButton';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 
+/**
+ * Component for a photo details modal.
+ *
+ * @param {Object} photo - The photo data.
+ * @param {Array} favourites - An array of favourited photo IDs.
+ * @param {function} updateToFavPhotoIds - Function triggered when the favourite button is clicked.
+ * @param {function} onClosePhotoDetailsModal - Function triggered when the X (close) button is clicked.
+ *
+ * @returns {JSX.Element} - JSX element representing the photo details modal.
+ */
 const PhotoDetailsModal = ({
   photo,
   favourites,

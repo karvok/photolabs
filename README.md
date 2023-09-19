@@ -32,8 +32,8 @@ Click on the various top menu options to browse through different photo categori
 🔎 Take a Closer Look\
 Click on a photo to view a larger version and discover relevant/similar photos
 
-🤩 Favorites / Likes\
-Show your appreciation by clicking the heart icon to favorite/like a photo
+🤩 Favourites / Likes\
+Show your appreciation by clicking the heart icon to favourite/like a photo
 
 💖 Notifications\
 Keep track of all your favourites with the heart icon notification feature built into the navigation menu

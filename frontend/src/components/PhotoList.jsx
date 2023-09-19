@@ -2,6 +2,16 @@ import React from 'react';
 import PhotoListItem from './PhotoListItem';
 import '../styles/PhotoList.scss';
 
+/**
+ * Component for a list of photos.
+ *
+ * @param {Array|Object} photos - The list of photos to display. Can be an array or an object.
+ * @param {Array} favourites - An array of favourited photo IDs.
+ * @param {function} updateToFavPhotoIds - Function triggered when the favourite button is clicked.
+ * @param {function} setPhotoSelected - Function triggered to select a photo.
+ *
+ * @returns {JSX.Element} - JSX element representing the list of photos.
+ */
 const PhotoList = ({
   photos,
   favourites,

@@ -1,5 +1,13 @@
 import React from 'react';
 
+/**
+ * Component for a favourite (heart) icon.
+ *
+ * @param {boolean} displayAlert - Indicates whether to display an alert circle on the favourite icon.
+ * @param {boolean} selected - Indicates whether the favourite icon is selected.
+ *
+ * @returns {JSX.Element} - JSX element representing the favourite icon.
+ */
 const FavIcon = ({ displayAlert, selected }) => {
   return (
     <svg

@@ -4,6 +4,11 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 import './App.scss';
 
+/**
+ * Main component responsible for rendering the entire app.
+ *
+ * @returns {JSX.Element} The rendered application.
+ */
 const App = () => {
   const {
     state,
